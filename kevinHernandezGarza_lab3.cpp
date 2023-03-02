@@ -16,3 +16,11 @@ int main()
 
     return 0;
 }
+
+int getSales()
+{
+}
+
+int findHighest()
+{
+}
