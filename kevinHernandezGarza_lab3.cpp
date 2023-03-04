@@ -9,41 +9,37 @@
 // This program determines which company's four divisions(Northeast, Southeast, Northwest, and Southwest) had the greatest sales for a quarter. It includes two functions that are called by the main function.
 //  ******************************************************************
 
-// maybe create an array that contains the four division and iterate the array to get their values.
-
 #include <iostream>
+#include <string>
+
 using namespace std;
 
-// function prototype
+// function prototypes
 int getSales(string);
 void getHighest(int, int, int, int);
 
 // main function
 int main()
 {
-    // sales[] = {northWest, southWest, northEast, southEast};
+    string sales[4] = {"Northwest", "Southwest", "Northeast", "Southeast"};
     int nw, sw, ne, se;
-    /*
-    asking the user for each division sale
-    return values to insert as parameter in
-    findHighest function
-    */
-    nw = getSales("northWest");
-    sw = getSales("southWest");
-    ne = getSales("northEast");
-    se = getSales("southEast");
 
-    // finding the highest sales
-    // takes is 4 parameters
+    nw = getSales("Northwest");
+    cout << "The sales for the " << sales[0] << " division is $" << nw << endl;
+    sw = getSales("Southwest");
+    cout << "The sales for the " << sales[1] << " division is $" << sw << endl;
+    ne = getSales("Northeast");
+    cout << "The sales for the " << sales[2] << " division is $" << ne << endl;
+    se = getSales("Southeast");
+    cout << "The sales for the " << sales[3] << " division is $" << se << endl;
+
+    // takes is 4 parameters to find the highest value
     getHighest(nw, sw, ne, se);
 
     return 0;
 }
 
-/*
-function definitions for sales and
-finding the highest sales
-*/
+// this function asks the user for the amount of the sales for a particular division
 int getSales(string division)
 {
     int sales;
@@ -57,43 +53,36 @@ int getSales(string division)
         cout << "CANNOT BE NEGATIVE! TRY AGAIN! " << endl;
         int getSales(string division);
     }
-    return sales;
 
-    /*
-    for (int i = 0; i > 3; i++)
-    {
-        if (sales[i] >= 0)
-        {
-            cout << "What were the quarterly sales for " << endl;
-            cin >> sales[i];
-        }
-    else
-        getSales()
-    }
-    */
+    return sales;
 }
 
-/*
-for finding highest value
-int sales[]= {sale1, sale2, sale3, sale4}
-assume first element from sales is highest and test it
-*/
+// this function finds the highest integer by comparing each division
 void getHighest(int nw, int sw, int ne, int se)
 {
-    /*int max = 0;
-
-    max = sales[0];
-
-    int max[0];
-
-    for (i = 0; i < 3; i++)
-    {
-        if (sales[i] > max)
-            max = sales[i]
-    }*/
-
-    int max = 0;
+    int max;
     string division;
+
+    if (nw > sw && nw > ne && nw > se)
+    {
+        max = nw;
+        division = "Northwest";
+    }
+    else if (sw > nw && sw > se && sw > ne)
+    {
+        max = sw;
+        division = "Southwest";
+    }
+    else if (ne > sw && ne > nw && ne > se)
+    {
+        max = ne;
+        division = "Northeast";
+    }
+    else
+    {
+        max = se;
+        division = "Southeast";
+    }
 
     cout << "The highest division is " << division << " with " << max << " in sales!";
 }
