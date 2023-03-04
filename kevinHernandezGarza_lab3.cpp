@@ -21,17 +21,23 @@ void getHighest(int, int, int, int);
 // main function
 int main()
 {
-    string sales[4] = {"Northwest", "Southwest", "Northeast", "Southeast"};
+    string divisions[4] = {"Northwest", "Southwest", "Northeast", "Southeast"};
     int nw, sw, ne, se;
 
-    nw = getSales("Northwest");
-    cout << "The sales for the " << sales[0] << " division is $" << nw << endl;
-    sw = getSales("Southwest");
-    cout << "The sales for the " << sales[1] << " division is $" << sw << endl;
-    ne = getSales("Northeast");
-    cout << "The sales for the " << sales[2] << " division is $" << ne << endl;
-    se = getSales("Southeast");
-    cout << "The sales for the " << sales[3] << " division is $" << se << endl;
+    cout << "********************************" << endl
+         << "DO NOT INPUT NEGATIVE NUMBERS," << endl
+         << "IF SO THE PROGRAM WILL" << endl
+         << "NOT PROCEED UNTIL YOU DO SO" << endl
+         << "********************************" << endl;
+
+    nw = getSales(divisions[0]);
+    cout << "The sales for the " << divisions[0] << " division is $" << nw << endl;
+    sw = getSales(divisions[1]);
+    cout << "The sales for the " << divisions[1] << " division is $" << sw << endl;
+    ne = getSales(divisions[2]);
+    cout << "The sales for the " << divisions[2] << " division is $" << ne << endl;
+    se = getSales(divisions[3]);
+    cout << "The sales for the " << divisions[3] << " division is $" << se << endl;
 
     // takes is 4 parameters to find the highest value
     getHighest(nw, sw, ne, se);
@@ -44,16 +50,16 @@ int getSales(string division)
 {
     int sales;
 
-    cout << "What were the quarterly sale for " << division << " division: " << endl;
+    cout << "What were the quarterly sale for " << division << " division: " << endl
+         << endl;
 
-    cin >> sales;
-
-    while (sales < 0)
+    // validation, if user inputs negative number it will not proceed
+    do
     {
-        cout << "CANNOT BE NEGATIVE! TRY AGAIN! " << endl;
-        int getSales(string division);
-    }
+        cin >> sales;
+    } while (sales < 0);
 
+    // returns sales integer
     return sales;
 }
 
@@ -84,5 +90,6 @@ void getHighest(int nw, int sw, int ne, int se)
         division = "Southeast";
     }
 
-    cout << "The highest division is " << division << " with " << max << " in sales!";
+    cout << endl
+         << "The highest division is " << division << " with $" << max << " in sales!";
 }
